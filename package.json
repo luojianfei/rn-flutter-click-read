@@ -7,11 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "publishConfig": {
-   "registry": "https://npm.bookln.cn"
- },
+    "registry": "https://npm.bookln.cn"
+  },
   "keywords": [
     "react-native"
   ],
+  "homepage": "https://github.com/luojianfei/rn-flutter-click-read",
   "author": "",
   "license": "",
   "peerDependencies": {

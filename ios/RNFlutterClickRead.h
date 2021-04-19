@@ -5,7 +5,7 @@
 #import <React/RCTBridgeModule.h>
 #endif
 
-@interface RNRnClickRead : NSObject <RCTBridgeModule>
+@interface RNFlutterClickRead : NSObject <RCTBridgeModule>
 
 @end
   

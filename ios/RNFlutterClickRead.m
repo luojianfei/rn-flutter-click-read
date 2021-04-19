@@ -1,7 +1,7 @@
 
-#import "RNRnClickRead.h"
+#import "RNFlutterClickRead.h"
 
-@implementation RNRnClickRead
+@implementation RNFlutterClickRead
 
 - (dispatch_queue_t)methodQueue
 {
