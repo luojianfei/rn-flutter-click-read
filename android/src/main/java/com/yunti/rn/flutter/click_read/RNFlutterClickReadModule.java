@@ -14,41 +14,47 @@ import io.flutter.embedding.engine.dart.DartExecutor;
 
 public class RNFlutterClickReadModule extends ReactContextBaseJavaModule {
 
-  private final ReactApplicationContext reactContext;
-  private static final String FLUTTER_ENGINE_ID_CLICK_READ = "YUNTITECH_CLICK_READ" ;
-  private FlutterEngine flutterEngine;
-  public RNFlutterClickReadModule(ReactApplicationContext reactContext) {
-    super(reactContext);
-    this.reactContext = reactContext;
-  }
+    private final ReactApplicationContext reactContext;
+    private static final String FLUTTER_ENGINE_ID_CLICK_READ = "YUNTITECH_CLICK_READ";
+    private FlutterEngine flutterEngine;
 
-  /**
-   * 初始化flutter引擎
-   */
-  private void initFlutterEngine(){
-    flutterEngine = new FlutterEngine(reactContext);
+    public RNFlutterClickReadModule(ReactApplicationContext reactContext) {
+        super(reactContext);
+        this.reactContext = reactContext;
+    }
 
-    flutterEngine.getDartExecutor().executeDartEntrypoint(
-            DartExecutor.DartEntrypoint.createDefault()
-    );
-    FlutterEngineCache
-            .getInstance()
-            .put(FLUTTER_ENGINE_ID_CLICK_READ, flutterEngine);
-  }
+    /**
+     * 初始化flutter引擎
+     */
+    private void initFlutterEngine() {
+        flutterEngine = new FlutterEngine(reactContext);
 
-  @ReactMethod
-  public void openClickRead(){
-    Activity activity = getCurrentActivity();
-    activity.startActivity(FlutterActivity.withCachedEngine(FLUTTER_ENGINE_ID_CLICK_READ).build(activity));
-  }
+        flutterEngine.getDartExecutor().executeDartEntrypoint(
+                DartExecutor.DartEntrypoint.createDefault()
+        );
+        FlutterEngineCache
+                .getInstance()
+                .put(FLUTTER_ENGINE_ID_CLICK_READ, flutterEngine);
+    }
 
-  @ReactMethod
-  public void initEngine(){
-    initFlutterEngine() ;
-  }
+    @ReactMethod
+    public void openClickRead() {
+        Activity activity = getCurrentActivity();
+        activity.startActivity(FlutterActivity.withCachedEngine(FLUTTER_ENGINE_ID_CLICK_READ).build(activity));
+    }
 
-  @Override
-  public String getName() {
-    return "RNFlutterClickRead";
-  }
+    @ReactMethod
+    public void initEngine() {
+        getCurrentActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                initFlutterEngine();
+            }
+        });
+    }
+
+    @Override
+    public String getName() {
+        return "RNFlutterClickRead";
+    }
 }
