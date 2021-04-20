@@ -20,9 +20,11 @@ public class RNFlutterClickReadModule extends ReactContextBaseJavaModule {
   public RNFlutterClickReadModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
-    initFlutterEngine() ;
   }
 
+  /**
+   * 初始化flutter引擎
+   */
   private void initFlutterEngine(){
     flutterEngine = new FlutterEngine(reactContext);
 
@@ -35,13 +37,18 @@ public class RNFlutterClickReadModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void startClickRead(){
+  public void openClickRead(){
     Activity activity = getCurrentActivity();
     activity.startActivity(FlutterActivity.withCachedEngine(FLUTTER_ENGINE_ID_CLICK_READ).build(activity));
   }
 
+  @ReactMethod
+  public void initEngine(){
+    initFlutterEngine() ;
+  }
+
   @Override
   public String getName() {
-    return "RNRnClickRead";
+    return "RNFlutterClickRead";
   }
 }

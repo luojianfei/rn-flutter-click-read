@@ -4,8 +4,15 @@ class ClickReadHelper {
   /**
    * 打开点读书页面
    */
-  startClickRead() {
-    native.startClickRead();
+  openClickRead() {
+    native.openClickRead();
+  }
+
+  /**
+   * 初始化flutter引擎
+   */
+  initEngine() {
+    native.initFlutterEngine();
   }
 }
 
