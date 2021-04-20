@@ -29,6 +29,13 @@ android {
 repositories {
     mavenCentral()
     google()
+    maven {
+        // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+        url "../flutter-click-read/build/host/outputs/repo"
+    }
+    maven {
+        url 'https://storage.googleapis.com/download.flutter.io'
+    }
 }
 
 dependencies {

@@ -1,5 +1,5 @@
 
-package com.reactlibrary;
+package com.yunti.rn.flutter.click_read;
 
 import java.util.Arrays;
 import java.util.Collections;
